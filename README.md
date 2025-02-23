@@ -1,40 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+<h1 style="text-align:center"> Gấu To-do-list  
+ </h1>
 
-## Getting Started
+***
+## Cài đặt mã nguồn
+### Clone mã nguồn dự án:
+   ``` bash
+    git clone https://github.com/tnqbao/gau_to_do_list_fe.git
+    cd gau_to_do_list_fe
+   ```
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+***
+### Cài đặt các thư viện cần thiết:
+  ``` bash
+    yarn install
+  ``` 
+  * hoặc
+  ``` bash
+    npm install
+   ```
+***
+### Cấu hình bến môi trường:
+* Tạo file .env như mẫu trong thư mục gốc của dự án:
+```dotenv
+ NEXT_PUBLIC_DATA_API=your-api-domain (mặc định là http://localhost:8088)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+***
+### Chạy ở chế độ dev mode:
+   ``` bash 
+    yarn dev
+   ```
+   * hoặc
+   ``` bash 
+   npm run dev
+   ```
+ ***
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Chạy ở chế độ build :
+   ``` bash
+    yarn build
+   ```
+   * hoặc
+   ``` bash
+     npm run build
+   ```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+***
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### Chạy ở chế độ start :
+   ``` bash
+    yarn start
+   ```
+   * hoặc
+   ``` bash
+    npm run start
+   ```
+  <li>Truy cập tại: <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></li>
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+***
+## Demo
+* Truy cập : <a href="https://gau-to-do-list-fe.vercel.app/" target="_blank">https://gau-to-do-list-fe.vercel.app/</a>
+***
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
