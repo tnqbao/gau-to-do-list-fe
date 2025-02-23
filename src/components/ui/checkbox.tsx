@@ -1,4 +1,3 @@
-import { ChangeEvent } from "react";
 
 interface CheckboxProps {
     checked: boolean;
@@ -10,7 +9,7 @@ export function Checkbox({ checked, onCheckedChange }: CheckboxProps) {
         <input
             type="checkbox"
             checked={checked}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => onCheckedChange()}
+            onChange={() => onCheckedChange()}
             className="w-5 h-5 accent-blue-500 cursor-pointer"
         />
     );
