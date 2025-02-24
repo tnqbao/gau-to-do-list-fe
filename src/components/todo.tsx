@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { axiosAPIInstance } from "@/utils/axios.config";
-import { toast } from "sonner"; // Import thư viện thông báo
+import {useEffect, useState} from "react";
+import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {Checkbox} from "@/components/ui/checkbox";
+import {axiosAPIInstance} from "@/utils/axios.config";
+import {toast} from "sonner";
 
 interface Task {
     id: number;
@@ -15,7 +15,7 @@ interface Task {
 
 export default function TodoComponent() {
     const [tasks, setTasks] = useState<Task[]>([]);
-    const [newTask, setNewTask] = useState({ title: "", description: "" });
+    const [newTask, setNewTask] = useState({title: "", description: ""});
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -44,9 +44,9 @@ export default function TodoComponent() {
             const response = await axiosAPIInstance.post("/tasks", newTask);
             setTasks((prevTasks) => [
                 ...prevTasks,
-                { ...newTask, id: response.data.taskID, completed: false },
+                {...newTask, id: response.data.taskID, completed: false},
             ]);
-            setNewTask({ title: "", description: "" });
+            setNewTask({title: "", description: ""});
             toast.success("Thêm công việc thành công!");
         } catch (error) {
             toast.error("Lỗi khi thêm công việc!");
@@ -57,9 +57,9 @@ export default function TodoComponent() {
 
     const toggleTask = async (id: number, completed: boolean) => {
         try {
-            await axiosAPIInstance.put(`/tasks/${id}`, { completed });
+            await axiosAPIInstance.put(`/tasks/${id}`, {completed});
             setTasks((prevTasks) =>
-                prevTasks.map((task) => (task.id === id ? { ...task, completed } : task))
+                prevTasks.map((task) => (task.id === id ? {...task, completed} : task))
             );
             toast.success("Cập nhật trạng thái công việc!");
         } catch (error) {
@@ -90,7 +90,7 @@ export default function TodoComponent() {
                         <Input
                             placeholder="Tiêu đề"
                             value={newTask.title}
-                            onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
+                            onChange={(e) => setNewTask({...newTask, title: e.target.value})}
                             className={"w-full md:w-2/5"}
                         />
                         <div className={"flex gap-1 justify-between w-full md:w-1/2"}>
@@ -98,11 +98,19 @@ export default function TodoComponent() {
                                 placeholder="Mô tả cụ thể"
                                 value={newTask.description}
                                 onChange={(e) =>
-                                    setNewTask({ ...newTask, description: e.target.value })
+                                    setNewTask({...newTask, description: e.target.value})
                                 }
                                 className={"flex w-4/5"}
                             />
-                            <Button onClick={addTask} className={"flex w-1/5 bg-black hover:bg-green-600 text-center"}>
+                            <Button
+                                onClick={addTask}
+                                disabled={!newTask.title.trim() || !newTask.description.trim()}
+                                className={`flex w-1/5 text-center ${
+                                    !newTask.title.trim() || !newTask.description.trim()
+                                        ? "bg-gray-400 cursor-not-allowed"
+                                        : "bg-black"
+                                }`}
+                            >
                                 Thêm
                             </Button>
                         </div>
@@ -123,7 +131,8 @@ export default function TodoComponent() {
                                     </h3>
                                     <p className="text-sm text-gray-500">{task.description}</p>
                                 </div>
-                                <Button className="bg-red-500 hover:bg-red-600 text-white" onClick={() => deleteTask(task.id)}>
+                                <Button className="bg-red-500 hover:bg-red-600 text-white"
+                                        onClick={() => deleteTask(task.id)}>
                                     Xóa
                                 </Button>
                             </div>
