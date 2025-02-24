@@ -80,7 +80,7 @@ export default function TodoComponent() {
     };
 
     return (
-        <div className="w-4/5 mx-auto p-6 md:p-12">
+        <div className="w-full md:w-4/5 md:mx-auto md:p-12">
             <Card className={"bg-white"}>
                 <CardHeader>
                     <h2 className="text-xl font-bold text-center"> 🐼 Gấu To Do List 🐼</h2>
